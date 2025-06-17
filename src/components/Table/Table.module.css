@@ -1,0 +1,142 @@
+.tableWrapper {
+  border: 2.5px solid#f3f4f6;
+  border-radius: 5px;
+  padding: 0.35rem;
+  /* width: 100%; */
+  overflow-x: auto;
+  max-width: 90vw;
+}
+
+.tableHeader {
+  /* border-bottom: 1px solid #ccc; */
+  /* min-width: min-content; */
+  white-space: nowrap;
+  padding-inline: 0.5rem;
+}
+
+.tableBody {
+  /* background: rgb(242, 242, 242); */
+}
+
+/* Hide cards on desktop, show table */
+.cardList {
+  display: none;
+}
+
+.dash {
+  height: 0.01rem;
+  background-color: black;
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .table {
+    display: none;
+  }
+  .cardList {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: space-evenly;
+    align-items: space-evenly;
+  }
+  .card {
+    position: relative;
+    padding: 1.25rem 1rem;
+
+    &:before {
+      content: '';
+      /* add a dash */
+
+      position: absolute;
+      top: -0.2rem;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 0.05rem;
+      width: 100%;
+      background-color: #f3f4f6;
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0rem;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      transition: opacity 0.2s ease, box-shadow 0.2s ease-in-out;
+      /* opacity: 0; */
+      box-shadow: none;
+
+      background-color: unset;
+      z-index: 10;
+      pointer-events: none;
+      margin: 0.25rem;
+      border-radius: 0.5px;
+
+      z-index: 12;
+      width: 98%;
+      transform: scaleY(0.95);
+
+      height: 100%;
+    }
+
+    &:hover:after {
+      box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.1);
+      opacity: 1;
+    }
+  }
+  .cardRow {
+    display: flex;
+    align-items: flex-start;
+    display: flex;
+
+    padding-block: 0.25rem;
+    /* border-bottom: 1px solid #e5e7eb; */
+  }
+  .cardRow:nth-child(2n) {
+    background-color: #f9fafb;
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* flex-direction: column; */
+    /* gap: 1rem; */
+    /* margin-bottom: 0.25rem; */
+    /* flex-direction: row; */
+
+    h4 {
+      font-size: 1.25rem;
+      padding-bottom: 0.5rem;
+      margin-bottom: 0.25rem;
+      margin: 0;
+    }
+    position: relative;
+  }
+  h3 {
+    font-size: 0.9rem;
+    top: 0.4rem;
+    right: 0.251rem;
+    color: #6b7280;
+    position: absolute;
+    font-weight: 400;
+    padding: 0;
+
+    margin: 0;
+  }
+
+  .cardLabel {
+    min-width: 7.5rem;
+    font-weight: 700;
+    color: #6b7280;
+
+    flex-shrink: 0;
+    text-align: justify;
+  }
+  .cardValue {
+    flex: 1;
+    word-break: break-word;
+  }
+}

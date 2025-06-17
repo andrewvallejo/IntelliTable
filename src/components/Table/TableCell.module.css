@@ -1,0 +1,26 @@
+.cell-inner {
+  margin: auto;
+  width: fit-content;
+  text-align: center;
+  padding-inline: 0.25rem;
+  max-height: 5rem;
+  max-width: 10rem;
+  overflow: hidden;
+  /** Text-body overflow */
+}
+
+.cell {
+  border: 0.5px solid #ccc;
+}
+
+@media (max-width: 768px) {
+  .cell {
+    border: none;
+  }
+  .cell-inner {
+    width: 100%;
+    max-width: 100%;
+    padding-inline: 0.5rem;
+    text-align: left;
+  }
+}
