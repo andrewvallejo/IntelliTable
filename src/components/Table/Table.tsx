@@ -1,9 +1,8 @@
 import styles from './Table.module.css';
+import TableCell from './TableCell';
+import TableRow from './TableRow';
 import { formatDataToTableFormat } from '../../utils';
 import { tableData } from '../../assets/mockData';
-
-import TableRow from './TableRow';
-import TableCell from './TableCell';
 
 export default function Table() {
   const { headers, rows } = formatDataToTableFormat(tableData);
@@ -12,10 +11,10 @@ export default function Table() {
     <div className={styles.tableWrapper}>
       {/* Desktop Table */}
       <table className={styles.table}>
-        <thead>
+        <thead className={styles.tableHeader}>
           <tr>
             {headers.map((header, idx) => (
-              <th key={idx} className={styles.tableHeader}>
+              <th key={idx} className={styles.tableHeading}>
                 {header}
               </th>
             ))}

@@ -1,0 +1,14 @@
+title {
+  will-change: filter;
+  transition: filter 300ms;
+  font-size: 3.2rem;
+  line-height: 1.1;
+}
+
+title:hover {
+  filter: drop-shadow(0 0 2rem #bcebffaa);
+}
+
+.main {
+  text-align: center;
+}
