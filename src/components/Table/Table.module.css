@@ -1,69 +1,76 @@
-.tableWrapper {
-  border-radius: 12px;
-  border: 12px solid #f3f4f6;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  max-width: 90vw;
-  max-height: calc(100vh - 10rem);
-  width: 100%;
-  background: #f9fafb;
-  overflow: auto;
-  position: relative;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+:root {
+  --color-bg-light: #f9fafb;
+  --color-bg-white: #ffffff;
+  --color-border: rgba(0, 0, 0, 0.04);
+  --color-border-subtle: rgba(0, 0, 0, 0.05);
+  --color-shadow: rgba(0, 0, 0, 0.03);
+  --color-header-shadow: rgba(0, 0, 0, 0.08);
+  --radius-lg: 12px;
+  --radius-md: 8px;
+  --font-sm: 0.95rem;
+  --padding-inline: 1rem;
 }
 
-.table {
-  border-collapse: separate; /* ✅ better with sticky headers */
-  border-spacing: 0;
+/* ----------------------------------------------
+   Layout Wrapper
+---------------------------------------------- */
+.tableWrapper {
+  display: flex;
+  flex-direction: column;
   width: 100%;
-  flex: 1 1 auto;
-  background: white;
-  border-radius: 8px;
-  font-size: 0.95rem;
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  max-width: 90vw;
+  max-height: calc(100vh - 10rem);
+  background: var(--color-bg-light);
+  border: 8px solid #f3f4f6;
+  border-radius: var(--radius-lg);
+  overflow: auto;
+  position: relative;
+  box-shadow: 0 2px 12px var(--color-shadow);
+}
+
+/* ----------------------------------------------
+   Table Styles
+---------------------------------------------- */
+.table {
+  width: 100%;
+  font-size: var(--font-sm);
+  background: var(--color-bg-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  border-collapse: separate;
+  border-spacing: 0;
 }
 
 .tableHeader {
-  /* leave blank; sticky handled by .tableHeading */
-}
-
-.tableHeading {
   position: sticky;
   top: 0;
   z-index: 2;
-  background: rgba(255, 255, 255, 0.9); /* ensures no transparency issues */
-  backdrop-filter: blur(10px);
-  padding-inline: 1rem;
-  height: 2.5rem;
-  font-weight: 600;
-  text-align: left;
-  white-space: nowrap;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-  box-shadow: inset 0 -1px 0 rgba(0, 0, 0, 0.06);
+  background: var(--color-bg-white);
 }
 
-th {
-  height: 100%;
-  vertical-align: middle;
+.tableHeader.isScrolled {
+  box-shadow: 0 2px 6px var(--color-header-shadow);
+}
+
+.tableHeading {
+  background: #ffffffcc;
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
+  white-space: nowrap;
+  padding-inline: var(--padding-inline);
+  height: 2.5rem;
+  border-bottom: 1px solid var(--color-border-subtle);
 }
 
 .tableBody {
-  flex: 1 1 auto;
-  width: 100%;
-  height: 100%;
-  overflow-y: scroll;
-  max-height: 70vh;
+  overflow-y: auto;
   box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.1);
 }
 
+/* ----------------------------------------------
+   Responsive: Card List (Mobile)
+---------------------------------------------- */
 .cardList {
-  display: none;
-}
-
-.dash {
-  height: 0.01rem;
-  background-color: black;
   display: none;
 }
 
@@ -82,9 +89,38 @@ th {
     position: relative;
     padding: 1.25rem 1rem;
     border: 1px solid #e5e7eb;
-    border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-    background-color: white;
+    border-radius: 2px;
+    box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.1);
+  }
+
+  .card::before {
+    content: '';
+    position: absolute;
+    top: -0.2rem;
+    left: 0;
+    width: 100%;
+    height: 0.05rem;
+    background-color: #f3f4f6;
+  }
+
+  .card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    margin: 0.25rem;
+    border-radius: 0.5px;
+    transform: scaleY(0.95);
+    background-color: unset;
+    pointer-events: none;
+    transition: opacity 0.2s ease, box-shadow 0.2s ease-in-out;
+    box-shadow: none;
+    opacity: 0;
+    z-index: 12;
+  }
+
+  .card:hover::after {
+    box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.1);
+    opacity: 1;
   }
 
   .cardRow {
@@ -94,25 +130,7 @@ th {
   }
 
   .cardRow:nth-child(2n) {
-    background-color: #f9fafb;
-  }
-
-  header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-  }
-
-  h3 {
-    font-size: 0.9rem;
-    top: 0.4rem;
-    right: 0.251rem;
-    color: #6b7280;
-    position: absolute;
-    font-weight: 400;
-    padding: 0;
-    margin: 0;
+    background-color: var(--color-bg-light);
   }
 
   .cardLabel {
@@ -126,5 +144,23 @@ th {
   .cardValue {
     flex: 1;
     word-break: break-word;
+  }
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  h3 {
+    font-size: 0.9rem;
+    top: 0.4rem;
+    right: 0.25rem;
+    color: #6b7280;
+    position: absolute;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
   }
 }

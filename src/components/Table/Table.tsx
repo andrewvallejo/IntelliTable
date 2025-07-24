@@ -3,15 +3,22 @@ import TableCell from './TableCell';
 import TableRow from './TableRow';
 import { formatDataToTableFormat } from '../../utils';
 import { tableData } from '../../assets/mockData';
+import { useRef } from 'react';
+import { useScroll } from '../../hooks/useScroll';
 
 export default function Table() {
   const { headers, rows } = formatDataToTableFormat(tableData);
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const scrolled = useScroll(scrollRef);
 
   return (
-    <div className={styles.tableWrapper}>
-      {/* Desktop Table */}
+    <div className={styles.tableWrapper} ref={scrollRef}>
       <table className={styles.table}>
-        <thead className={styles.tableHeader}>
+        <thead
+          className={`${styles.tableHeader} ${
+            scrolled ? styles.isScrolled : ''
+          }`}
+        >
           <tr>
             {headers.map((header, idx) => (
               <th key={idx} className={styles.tableHeading}>
@@ -26,6 +33,7 @@ export default function Table() {
           ))}
         </tbody>
       </table>
+
       {/* Mobile Cards */}
       <div className={styles.cardList}>
         {rows.map((row, rowIdx) => (
