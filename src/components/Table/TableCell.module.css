@@ -1,4 +1,12 @@
-.cell-inner {
+.cell {
+  border: 0.5px solid rgba(0, 0, 0, 0.05);
+  padding: 0.5rem;
+  vertical-align: middle;
+  background-color: white;
+  transition: background-color 0.2s ease;
+}
+
+.cellInner {
   margin: auto;
   width: fit-content;
   text-align: center;
@@ -6,18 +14,17 @@
   max-height: 5rem;
   max-width: 10rem;
   overflow: hidden;
-  /** Text-body overflow */
-}
-
-.cell {
-  border: 0.5px solid #ccc;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 @media (max-width: 768px) {
   .cell {
     border: none;
+    background-color: transparent;
   }
-  .cell-inner {
+
+  .cellInner {
     width: 100%;
     max-width: 100%;
     padding-inline: 0.5rem;

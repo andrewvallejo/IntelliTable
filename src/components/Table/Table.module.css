@@ -1,3 +1,4 @@
+/* TODO: extract this to use across all css files */
 :root {
   --color-bg-light: #f9fafb;
   --color-bg-white: #ffffff;
@@ -21,7 +22,7 @@
   max-width: 90vw;
   max-height: calc(100vh - 10rem);
   background: var(--color-bg-light);
-  border: 8px solid #f3f4f6;
+  border: 6px solid #f3f4f6;
   border-radius: var(--radius-lg);
   overflow: auto;
   position: relative;

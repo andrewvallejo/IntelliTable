@@ -5,24 +5,19 @@ export default function TagCell({
 }: {
   cell: string | number | boolean | Date | Array<string | number | boolean>;
 }) {
+  const isArray = Array.isArray(cell);
+  const displayAsGrid = isArray && cell.length > 3;
+
   return (
     <div className={styles.flexWrap}>
-      {Array.isArray(cell) && cell.length > 3 ? (
-        <>
-          <div className={styles.gridWrap}>
-            {cell.map((item, index) => (
-              <span key={index} className={styles.tag}>
-                {String(item)}
-              </span>
-            ))}
-          </div>
-        </>
-      ) : Array.isArray(cell) ? (
-        cell.map((item, index) => (
-          <span key={index} className={styles.tag}>
-            {String(item)}
-          </span>
-        ))
+      {isArray ? (
+        <div className={displayAsGrid ? styles.tagGrid : styles.tagGroup}>
+          {cell.map((item, index) => (
+            <span key={index} className={styles.tag}>
+              {String(item)}
+            </span>
+          ))}
+        </div>
       ) : (
         <span className={styles.tag}>{String(cell)}</span>
       )}

@@ -1,8 +1,7 @@
-// import styles from './TableRow.module.css';
-import { extractType } from '../../utils';
 import CheckmarkCell from '../Cell/CheckmarkCell';
-import TagCell from '../Cell/TagCell';
 import styles from './TableCell.module.css';
+import TagCell from '../Cell/TagCell';
+// import { extractType } from '../../utils';
 
 interface Props {
   cellIndex: number;
@@ -10,13 +9,11 @@ interface Props {
 }
 
 export default function TableCell({ cell }: Props) {
-  const cellType = extractType(cell);
-  console.log(String(cell), cellType);
-  // if cell is boolean, render CheckmarkCell (import it)
+  // const cellType = extractType(cell);
 
   return (
     <td className={styles.cell}>
-      <div className={styles['cell-inner']}>
+      <div className={styles.cellInner}>
         {typeof cell === 'boolean' ? (
           <CheckmarkCell value={cell} />
         ) : Array.isArray(cell) &&

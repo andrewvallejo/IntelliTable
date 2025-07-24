@@ -4,7 +4,7 @@ import Table from './components/Table/Table';
 export default function App() {
   return (
     <main className={styles.main}>
-      <h1 className={styles.title}>Intellitable</h1>
+      <h1 className={styles.title}>IntelliTable</h1>
       <Table />
     </main>
   );

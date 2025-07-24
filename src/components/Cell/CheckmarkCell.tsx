@@ -8,12 +8,12 @@ export default function CheckmarkCell({ value }: Props) {
   return (
     <div
       className={`${styles.iconWrapper} ${value ? styles.true : styles.false}`}
+      role="img"
+      aria-label={value ? 'True' : 'False'}
     >
-      {value ? (
-        <span className={styles.icon}>✔</span>
-      ) : (
-        <span className={styles.icon}>✖</span>
-      )}
+      <span className={`${styles.icon} ${!value ? styles.iconX : ''}`}>
+        {value ? '✓' : '×'}
+      </span>
     </div>
   );
 }
