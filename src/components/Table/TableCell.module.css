@@ -33,5 +33,7 @@
     max-width: 100%;
     padding-inline: 0.5rem;
     text-align: left;
+    white-space: normal;
+    max-height: none;
   }
 }

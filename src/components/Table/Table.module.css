@@ -81,6 +81,7 @@
     border-radius: 2px;
     box-shadow: 3px 3px 9px var(--color-shadow);
     background-color: var(--color-surface);
+    overflow-x: hidden;
   }
 
   .card::before {
@@ -133,6 +134,7 @@
 
   .cardValue {
     flex: 1;
+    overflow-wrap: anywhere;
     word-break: break-word;
   }
 
