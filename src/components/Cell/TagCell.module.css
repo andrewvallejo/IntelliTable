@@ -21,20 +21,20 @@
 
 .tag {
   display: inline-block;
-  background-color: #f4f4f6;
-  color: #1f2937;
+  background-color: var(--tag-bg);
+  color: var(--tag-text);
   border-radius: 9999px;
   padding: 0.1em 0.75em;
   font-size: 0.88em;
   font-weight: 500;
   white-space: nowrap;
-  border: 1px solid #e5e7eb;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  border: 1px solid var(--tag-border);
+  box-shadow: 0 1px 2px var(--color-shadow);
   transition: background 0.2s ease;
 }
 
 .tag:hover {
-  background-color: #e5e7eb;
+  background-color: var(--color-border);
 }
 
 @media (max-width: 768px) {

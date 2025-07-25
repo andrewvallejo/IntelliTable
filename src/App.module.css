@@ -12,3 +12,24 @@ title:hover {
 .main {
   text-align: center;
 }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: #f3f4f6;
+    background-color: #242424;
+  }
+  body {
+    background-color: #242424;
+    color: #f3f4f6;
+  }
+  a {
+    color: #bcebff;
+  }
+  a:hover {
+    color: #90cdf4;
+  }
+  button {
+    background-color: #1a1a1a;
+    color: #f3f4f6;
+  }
+}

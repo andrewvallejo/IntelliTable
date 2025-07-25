@@ -1,15 +1,21 @@
 .row {
   transition: background 0.25s ease;
   cursor: default;
+}
 
-  &:hover {
-    background-color: #f3f4f6;
-  }
+/* Remove b/c probably doesn't work */
+.row:hover {
+  background-color: var(--color-surface);
 }
 
 @media (max-width: 768px) {
   .row {
     border-bottom: 1px solid #e5e7eb;
+    background-color: transparent;
+  }
+
+  /* Remove b/c probably doesn't work */
+  .row:hover {
     background-color: transparent;
   }
 }

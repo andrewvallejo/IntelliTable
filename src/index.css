@@ -1,20 +1,85 @@
 :root {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
+  /* Typography */
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,
     Arial, sans-serif;
+  --font-sm: 0.95rem;
 
-  line-height: 1.5;
+  /* Spacing & Radius */
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --padding-inline: 1rem;
+
+  /* Colors – Light */
+  --color-bg: #ffffff;
+  --color-surface: #f9fafb;
+  --color-text: #213547;
+  --color-muted: #6b7280;
+  --color-border: rgba(0, 0, 0, 0.05);
+  --color-shadow: rgba(0, 0, 0, 0.03);
+  --color-header-shadow: rgba(0, 0, 0, 0.08);
+
+  /* Pills & Tags */
+  --tag-bg: #f4f4f6;
+  --tag-border: #e5e7eb;
+  --tag-text: #1f2937;
+
+  /* Booleans */
+  --icon-true: #22c55e;
+  --icon-false: #ef4444;
+
+  /* Body defaults */
+  font-family: var(--font-sans);
   font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* Light Theme base */
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  color-scheme: light dark;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg: #242424;
+    --color-surface: #1a1a1a;
+    --color-text: #f3f4f6;
+    --color-muted: #9ca3af;
+    --color-border: rgba(255, 255, 255, 0.05);
+    --color-shadow: rgba(0, 0, 0, 0.2);
+    --color-header-shadow: rgba(0, 0, 0, 0.4);
+    --tag-bg: #2e2e2e;
+    --tag-border: #3b3b3b;
+    --tag-text: #e5e5e5;
+  }
+
+  a:hover {
+    color: #a3b0ff;
+  }
+
+  button {
+    background-color: #1a1a1a;
+  }
+}
+
+/* Body Layout */
+body {
+  margin: 0;
+  min-width: 20rem;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+
+  font-family: var(--font-sans);
+  background: var(--color-bg);
+  color: var(--color-text);
+}
+
+/* Basic Element Styles */
 a {
   font-weight: 500;
   color: #646cff;
@@ -24,18 +89,6 @@ a:hover {
   color: #535bf2;
 }
 
-body {
-  margin: 0;
-  min-width: 20rem;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  overflow: hidden;
-  background: inherit;
-  color: inherit;
-}
-
 button {
   border-radius: 8px;
   border: 1px solid transparent;
@@ -43,7 +96,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #f9f9f9;
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -53,17 +106,4 @@ button:hover {
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
 }
