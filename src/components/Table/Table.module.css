@@ -1,28 +1,18 @@
-/* TODO: extract this to use across all css files */
-:root {
-  --color-bg-light: #f9fafb;
-  --color-bg-white: #ffffff;
-  --color-border: rgba(0, 0, 0, 0.04);
-  --color-border-subtle: rgba(0, 0, 0, 0.05);
-  --color-shadow: rgba(0, 0, 0, 0.03);
-  --color-header-shadow: rgba(0, 0, 0, 0.08);
-  --radius-lg: 12px;
-  --radius-md: 8px;
-  --font-sm: 0.95rem;
-  --padding-inline: 1rem;
-}
-
 /* ----------------------------------------------
    Layout Wrapper
 ---------------------------------------------- */
+.tableOuterWrapper {
+  position: relative;
+}
+
 .tableWrapper {
   display: flex;
   flex-direction: column;
   width: 100%;
   max-width: 90vw;
   max-height: calc(100vh - 10rem);
-  background: var(--color-bg-light);
-  border: 6px solid #f3f4f6;
+  background: var(--color-surface);
+  border: 6px solid var(--color-border);
   border-radius: var(--radius-lg);
   overflow: auto;
   position: relative;
@@ -30,12 +20,12 @@
 }
 
 /* ----------------------------------------------
-   Table Styles
+   Table Styles (768 min-width)
 ---------------------------------------------- */
 .table {
   width: 100%;
   font-size: var(--font-sm);
-  background: var(--color-bg-white);
+  background: var(--color-bg);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   border-collapse: separate;
@@ -46,7 +36,7 @@
   position: sticky;
   top: 0;
   z-index: 2;
-  background: var(--color-bg-white);
+  background: var(--color-bg);
 }
 
 .tableHeader.isScrolled {
@@ -54,22 +44,20 @@
 }
 
 .tableHeading {
-  background: #ffffffcc;
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
+  background: var(--color-bg);
   white-space: nowrap;
   padding-inline: var(--padding-inline);
   height: 2.5rem;
-  border-bottom: 1px solid var(--color-border-subtle);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .tableBody {
   overflow-y: auto;
-  box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.1);
+  box-shadow: 3px 3px 9px var(--color-shadow);
 }
 
 /* ----------------------------------------------
-   Responsive: Card List (Mobile)
+   Responsive: Card List (768 max-width)
 ---------------------------------------------- */
 .cardList {
   display: none;
@@ -89,9 +77,10 @@
   .card {
     position: relative;
     padding: 1.25rem 1rem;
-    border: 1px solid #e5e7eb;
+    border: 1px solid var(--color-border);
     border-radius: 2px;
-    box-shadow: 3px 3px 9px rgba(0, 0, 0, 0.1);
+    box-shadow: 3px 3px 9px var(--color-shadow);
+    background-color: var(--color-surface);
   }
 
   .card::before {
@@ -101,7 +90,7 @@
     left: 0;
     width: 100%;
     height: 0.05rem;
-    background-color: #f3f4f6;
+    background-color: var(--color-border);
   }
 
   .card::after {
@@ -120,7 +109,7 @@
   }
 
   .card:hover::after {
-    box-shadow: 0px 0px 9px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 9px var(--color-shadow);
     opacity: 1;
   }
 
@@ -131,13 +120,13 @@
   }
 
   .cardRow:nth-child(2n) {
-    background-color: var(--color-bg-light);
+    background-color: var(--color-surface);
   }
 
   .cardLabel {
     min-width: 7.5rem;
     font-weight: 700;
-    color: #6b7280;
+    color: var(--color-muted);
     flex-shrink: 0;
     text-align: justify;
   }
@@ -158,10 +147,59 @@
     font-size: 0.9rem;
     top: 0.4rem;
     right: 0.25rem;
-    color: #6b7280;
+    color: var(--color-muted);
     position: absolute;
     font-weight: 400;
     margin: 0;
     padding: 0;
   }
+}
+
+/* ----------------------------------------------
+   Arrows
+---------------------------------------------- */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+}
+.leftArrow,
+.rightArrow {
+  position: absolute;
+  font-size: 1.5rem;
+  color: var(--color-muted);
+  z-index: 10;
+  cursor: pointer;
+  user-select: none;
+  bottom: -2.25rem;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  pointer-events: none;
+}
+
+.leftArrow {
+  left: 0.75rem;
+}
+
+.rightArrow {
+  right: 0.75rem;
+}
+
+.visible {
+  opacity: 0.5;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+.leftArrow:hover,
+.rightArrow:hover {
+  opacity: 0.8;
+  transform: scale(1.1);
 }
