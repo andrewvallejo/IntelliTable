@@ -2,12 +2,12 @@ import styles from './Table.module.css';
 import TableCell from './TableCell';
 import TableRow from './TableRow';
 import { formatDataToTableFormat } from '../../utils';
-import { tableData } from '../../assets/mockData';
+import { getRandomTableData } from '../../Utils/tableData';
 import { useEffect, useRef, useState } from 'react';
 import { useScroll } from '../../hooks/useScroll';
 
 export default function Table() {
-  const { headers, rows } = formatDataToTableFormat(tableData);
+  const { headers, rows } = formatDataToTableFormat(getRandomTableData(10));
   const scrollRef = useRef<HTMLDivElement>(null);
   const scrolled = useScroll(scrollRef);
 

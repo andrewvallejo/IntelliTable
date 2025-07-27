@@ -1,32 +1,29 @@
-/* ----------------------------------------------
-   Layout Wrapper
----------------------------------------------- */
+/* ========== Layout Wrapper ========== */
 .tableOuterWrapper {
   position: relative;
 }
 
 .tableWrapper {
   display: flex;
-  flex-direction: column;
+  position: relative;
   width: 100%;
+  border: 6px solid var(--color-border);
+  background: var(--color-surface);
+  box-shadow: 0 2px 12px var(--color-shadow);
+  overflow: auto;
+  flex-direction: column;
   max-width: 90vw;
   max-height: calc(100vh - 10rem);
-  background: var(--color-surface);
-  border: 6px solid var(--color-border);
   border-radius: var(--radius-lg);
-  overflow: auto;
-  position: relative;
-  box-shadow: 0 2px 12px var(--color-shadow);
 }
 
-/* ----------------------------------------------
-   Table Styles (768 min-width)
----------------------------------------------- */
+
+/* ========== Table Styles (min-width: 768px) ========== */
 .table {
   width: 100%;
-  font-size: var(--font-sm);
-  background: var(--color-bg);
   border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  font-size: var(--font-sm);
   border-radius: var(--radius-md);
   border-collapse: separate;
   border-spacing: 0;
@@ -44,10 +41,10 @@
 }
 
 .tableHeading {
+  height: 2.5rem;
   background: var(--color-bg);
   white-space: nowrap;
   padding-inline: var(--padding-inline);
-  height: 2.5rem;
   border-bottom: 1px solid var(--color-border);
 }
 
@@ -56,14 +53,13 @@
   box-shadow: 3px 3px 9px var(--color-shadow);
 }
 
-/* ----------------------------------------------
-   Responsive: Card List (768 max-width)
----------------------------------------------- */
+
+/* ========== Responsive: Card List (max-width: 768px) ========== */
 .cardList {
   display: none;
 }
 
-@media (max-width: 768px) {
+@media (width <=768px) {
   .table {
     display: none;
   }
@@ -97,20 +93,22 @@
   .card::after {
     content: '';
     position: absolute;
-    inset: 0;
+    z-index: 12;
     margin: 0.25rem;
+    box-shadow: none;
+    transition:
+      opacity 0.2s ease,
+      box-shadow 0.2s ease-in-out;
+    inset: 0;
     border-radius: 0.5px;
     transform: scaleY(0.95);
     background-color: unset;
     pointer-events: none;
-    transition: opacity 0.2s ease, box-shadow 0.2s ease-in-out;
-    box-shadow: none;
     opacity: 0;
-    z-index: 12;
   }
 
   .card:hover::after {
-    box-shadow: 0px 0px 9px var(--color-shadow);
+    box-shadow: 0 0 9px var(--color-shadow);
     opacity: 1;
   }
 
@@ -125,11 +123,11 @@
   }
 
   .cardLabel {
-    min-width: 7.5rem;
-    font-weight: 700;
     color: var(--color-muted);
-    flex-shrink: 0;
+    font-weight: 700;
     text-align: justify;
+    min-width: 7.5rem;
+    flex-shrink: 0;
   }
 
   .cardValue {
@@ -146,43 +144,45 @@
   }
 
   h3 {
-    font-size: 0.9rem;
+    position: absolute;
     top: 0.4rem;
     right: 0.25rem;
-    color: var(--color-muted);
-    position: absolute;
-    font-weight: 400;
     margin: 0;
     padding: 0;
+    color: var(--color-muted);
+    font-size: 0.9rem;
+    font-weight: 400;
   }
 }
 
-/* ----------------------------------------------
-   Arrows
----------------------------------------------- */
 
+/* ========== Arrows ========== */
 @keyframes fadeIn {
   from {
     opacity: 0;
     transform: scale(0.95);
   }
+
   to {
     opacity: 0.5;
     transform: scale(1);
   }
 }
+
 .leftArrow,
 .rightArrow {
   position: absolute;
-  font-size: 1.5rem;
-  color: var(--color-muted);
-  z-index: 10;
-  cursor: pointer;
-  user-select: none;
   bottom: -2.25rem;
+  z-index: 10;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+  color: var(--color-muted);
+  user-select: none;
   opacity: 0;
   transform: scale(0.95);
-  transition: opacity 0.3s ease, transform 0.3s ease;
   pointer-events: none;
 }
 

@@ -1,21 +1,22 @@
-.row {
-  transition: background 0.25s ease;
+.row td {
   cursor: default;
+  transition: background 0.25s ease;
+  background-color: var(--color-bg);
 }
 
-/* Remove b/c probably doesn't work */
-.row:hover {
+.rowAlt td {
   background-color: var(--color-surface);
 }
 
-@media (max-width: 768px) {
-  .row {
-    border-bottom: 1px solid #e5e7eb;
-    background-color: transparent;
-  }
+.row:hover,
+.rowAlt:hover {
+  background-color: var(--color-accent);
+}
 
-  /* Remove b/c probably doesn't work */
-  .row:hover {
-    background-color: transparent;
+@media (width <= 768px) {
+  .row,
+  .row td {
+    border-bottom: 1px solid #e5e7eb;
+    background-color: transparent !important;
   }
 }

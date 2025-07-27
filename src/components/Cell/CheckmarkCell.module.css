@@ -1,17 +1,23 @@
+/* ========== Icon Wrapper ========== */
 .iconWrapper {
   display: inline-flex;
-  align-items: center;
-  justify-content: center;
   width: 28px;
   height: 28px;
-  border-radius: 9999px;
   font-size: 1rem;
   font-weight: 600;
-  border: 2px solid;
-  box-shadow: 0 1px 3px var(--color-shadow);
   line-height: 1;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid;
+  border-radius: 9999px;
+  box-shadow: 0 1px 3px var(--color-shadow);
 }
 
+.icon {
+  font-size: 1.35rem;
+}
+
+/* ========== Icon States ========== */
 .true {
   color: var(--icon-true);
   border-color: var(--icon-true);
@@ -20,8 +26,4 @@
 .false {
   color: var(--icon-false);
   border-color: var(--icon-false);
-}
-
-.icon {
-  font-size: 1.35rem;
 }
