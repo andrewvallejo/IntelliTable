@@ -1,17 +1,20 @@
 // Table.tsx
 import Layout from './Layout/Layout';
-import { formatDataToTableFormat, getRandomTableData } from '@/utils/tableData';
-import { lazy, Suspense, useState } from 'react';
+import { lazy, Suspense } from 'react';
+import type { TableCell } from '@/types/table';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 
 const Table = lazy(() => import('./Table/Table'));
 const CardList = lazy(() => import('./CardList/CardList'));
 
-export default function IntelliTable() {
-  const [data] = useState(() => getRandomTableData(10));
+export default function IntelliTable({
+  headers,
+  rows,
+}: {
+  headers: string[];
+  rows: TableCell[][];
+}) {
   const isMobile = useMediaQuery('(max-width: 768px)');
-
-  const { headers, rows } = formatDataToTableFormat(data);
 
   return (
     <Layout>
