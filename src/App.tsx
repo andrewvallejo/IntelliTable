@@ -1,11 +1,11 @@
+import IntelliTable from './components/IntelliTable/IntelliTable';
 import styles from './App.module.css';
-import Table from './components/Table/Table';
 
 export default function App() {
   return (
     <main className={styles.main}>
       <h1 className={styles.title}>IntelliTable</h1>
-      <Table />
+      <IntelliTable />
     </main>
   );
 }
