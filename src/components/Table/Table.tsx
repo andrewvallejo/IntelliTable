@@ -1,4 +1,4 @@
-import IntelliCell from './Cell/IntelliCell';
+import IntelliCell from './IntelliCell/IntelliCell';
 import styles from './Table.module.css';
 import TableRow from './Row';
 import { formatDataToTableFormat } from '../../utils';

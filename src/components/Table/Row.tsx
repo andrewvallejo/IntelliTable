@@ -1,4 +1,4 @@
-import IntelliCell from './Cell/IntelliCell';
+import IntelliCell from './IntelliCell/IntelliCell';
 import styles from './Row.module.css';
 
 interface Props {

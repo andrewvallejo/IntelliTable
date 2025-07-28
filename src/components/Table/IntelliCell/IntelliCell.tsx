@@ -1,5 +1,6 @@
 import styles from './IntelliCell.module.css';
-import { Cell } from '../IntelliCell/index';
+import { Cell } from '.';
+
 // import { extractType } from '../../utils';
 
 interface Props {
