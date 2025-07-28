@@ -1,4 +1,4 @@
-import styles from './Table.module.css';
+import styles from './CardList.module.css';
 import { IntelliCell } from '../IntelliCell';
 import { renderValue } from '@/utils/tableData';
 import type { TableCell } from '@/types/table';
