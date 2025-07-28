@@ -1,5 +1,5 @@
 import styles from './IntelliCell.module.css';
-import { Cell } from '.';
+import { Cells } from './Cells';
 
 // import { extractType } from '../../utils';
 
@@ -15,10 +15,10 @@ export default function IntelliCell({ cell }: Props) {
     <td className={styles.cell}>
       <div className={styles.cellInner}>
         {typeof cell === 'boolean' ? (
-          <Cell.Checkmark value={cell} />
+          <Cells.Checkmark value={cell} />
         ) : Array.isArray(cell) &&
           cell.every((item) => typeof item === 'string') ? (
-          <Cell.Tag cell={cell} />
+          <Cells.Tag cell={cell} />
         ) : Array.isArray(cell) ? (
           cell.join(', ')
         ) : (

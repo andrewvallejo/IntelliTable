@@ -16,3 +16,10 @@ export interface Data {
   reviewedBy: string[];
   notes: string;
 }
+
+export type TableCell =
+  | string
+  | number
+  | boolean
+  | Date
+  | Array<string | number | boolean>;
