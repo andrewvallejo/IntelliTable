@@ -1,5 +1,5 @@
-import styles from './TableRow.module.css';
-import TableCell from './TableCell';
+import IntelliCell from './Cell/IntelliCell';
+import styles from './Row.module.css';
 
 interface Props {
   row: Array<
@@ -8,9 +8,8 @@ interface Props {
   rowIndex: number;
 }
 
-export default function TableRow({ row, rowIndex }: Props) {
+export default function Row({ row, rowIndex }: Props) {
   const isEven = rowIndex % 2 === 0;
-  console.log('isEven', isEven);
   return (
     // TODO: remove row index if not used for anything else
     <tr
@@ -18,7 +17,7 @@ export default function TableRow({ row, rowIndex }: Props) {
       key={rowIndex}
     >
       {row.map((cell, cellIndex) => (
-        <TableCell key={cellIndex} cellIndex={cellIndex} cell={cell} />
+        <IntelliCell key={cellIndex} cellIndex={cellIndex} cell={cell} />
       ))}
     </tr>
   );

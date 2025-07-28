@@ -1,4 +1,4 @@
-import type { Data } from '../components/types/table';
+import type { Data } from '../types/table';
 import { tableData } from '../assets/mockData';
 
 /**

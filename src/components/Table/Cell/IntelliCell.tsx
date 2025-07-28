@@ -1,6 +1,6 @@
-import CheckmarkCell from '../Cell/CheckmarkCell';
-import styles from './TableCell.module.css';
-import TagCell from '../Cell/TagCell';
+import styles from './Cell.module.css';
+import { Cell } from '.';
+
 // import { extractType } from '../../utils';
 
 interface Props {
@@ -8,17 +8,17 @@ interface Props {
   cell: string | number | boolean | Date | Array<string | number | boolean>;
 }
 
-export default function TableCell({ cell }: Props) {
+export default function IntelliCell({ cell }: Props) {
   // const cellType = extractType(cell);
 
   return (
     <td className={styles.cell}>
       <div className={styles.cellInner}>
         {typeof cell === 'boolean' ? (
-          <CheckmarkCell value={cell} />
+          <Cell.Checkmark value={cell} />
         ) : Array.isArray(cell) &&
           cell.every((item) => typeof item === 'string') ? (
-          <TagCell cell={cell} />
+          <Cell.Tag cell={cell} />
         ) : Array.isArray(cell) ? (
           cell.join(', ')
         ) : (
