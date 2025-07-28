@@ -1,5 +1,5 @@
-import IntelliCell from './IntelliCell/IntelliCell';
 import styles from './Row.module.css';
+import { Cell } from './IntelliCell';
 
 interface Props {
   row: Array<
@@ -17,7 +17,7 @@ export default function Row({ row, rowIndex }: Props) {
       key={rowIndex}
     >
       {row.map((cell, cellIndex) => (
-        <IntelliCell key={cellIndex} cellIndex={cellIndex} cell={cell} />
+        <Cell key={cellIndex} cellIndex={cellIndex} cell={cell} />
       ))}
     </tr>
   );

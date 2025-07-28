@@ -1,6 +1,6 @@
-import IntelliCell from './IntelliCell/IntelliCell';
+import Row from './Row';
 import styles from './Table.module.css';
-import TableRow from './Row';
+import { Cell } from './IntelliCell';
 import { formatDataToTableFormat } from '../../utils';
 import { getRandomTableData } from '../../Utils/tableData';
 import { useEffect, useRef, useState } from 'react';
@@ -60,7 +60,7 @@ export default function Table() {
           </thead>
           <tbody className={styles.tableBody}>
             {rows.map((row, rowIndex) => (
-              <TableRow key={rowIndex} row={row} rowIndex={rowIndex} />
+              <Row key={rowIndex} row={row} rowIndex={rowIndex} />
             ))}
           </tbody>
         </table>
@@ -79,7 +79,7 @@ export default function Table() {
                     headers[cellIdx + 2]
                   }:`}</span>
                   <span className={styles.cardValue}>
-                    <IntelliCell cellIndex={cellIdx} cell={cell} />
+                    <Cell cellIndex={cellIdx} cell={cell} />
                   </span>
                 </div>
               ))}
