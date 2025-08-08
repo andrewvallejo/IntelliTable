@@ -1,5 +1,7 @@
 .leftArrow,
-.rightArrow {
+.rightArrow,
+.upArrow,
+.downArrow {
   position: absolute;
   bottom: -2.25rem;
   padding: 0;
@@ -15,6 +17,16 @@
   border: none; /* removes default button border */
 }
 
+.leftArrow,
+.rightArrow {
+  bottom: -2.25rem;
+}
+
+.upArrow,
+.downArrow {
+  right: -2.25rem;
+}
+
 .leftArrow {
   left: 0.75rem;
 }
@@ -23,21 +35,36 @@
   right: 0.75rem;
 }
 
-.visible {
-  opacity: 0.5;
-  transform: scale(1);
-  pointer-events: auto;
+.upArrow {
+  top: 0.75rem; /* distance from the top edge */
+
+  bottom: unset; /* don't let bottom positioning interfere */
+}
+
+.downArrow {
+  bottom: 0.75rem; /* distance from the bottom edge */
+  top: unset; /* don't let top positioning interfere */
 }
 
 .leftArrow:hover,
-.rightArrow:hover {
+.rightArrow:hover,
+.upArrow:hover,
+.downArrow:hover {
   opacity: 0.8;
   transform: scale(1.1);
 }
 
 .leftArrow:focus,
-.rightArrow:focus {
+.rightArrow:focus,
+.upArrow:focus,
+.downArrow:focus {
   outline: none;
+}
+
+.visible {
+  opacity: 0.5;
+  transform: scale(1);
+  pointer-events: auto;
 }
 
 .leftArrow:focus-visible,

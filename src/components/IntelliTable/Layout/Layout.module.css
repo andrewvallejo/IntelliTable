@@ -12,6 +12,6 @@
   overflow: auto;
   flex-direction: column;
   max-width: 90vw;
-  max-height: calc(100vh - 10rem);
+  max-height: calc(100vh - 11rem);
   border-radius: var(--radius-lg);
 }
