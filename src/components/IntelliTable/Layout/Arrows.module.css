@@ -1,28 +1,18 @@
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-
-  to {
-    opacity: 0.5;
-    transform: scale(1);
-  }
-}
-
 .leftArrow,
 .rightArrow {
   position: absolute;
   bottom: -2.25rem;
+  padding: 0;
   z-index: 10;
   font-size: 1.5rem;
+  background: unset;
   cursor: pointer;
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  transition: opacity 0.3s ease, transform 0.3s ease, color 0.3s ease;
   color: var(--color-muted);
   user-select: none;
   opacity: 0;
   transform: scale(0.95);
-  pointer-events: none;
+  border: none; /* removes default button border */
 }
 
 .leftArrow {
@@ -43,4 +33,18 @@
 .rightArrow:hover {
   opacity: 0.8;
   transform: scale(1.1);
+}
+
+.leftArrow:focus,
+.rightArrow:focus {
+  outline: none;
+}
+
+.leftArrow:focus-visible,
+.rightArrow:focus-visible {
+  color: var(--color-focus);
+  outline: 2px solid var(--color-focus);
+  outline-offset: 1px;
+
+  border-radius: 50%; /* match arrow's round shape if needed */
 }
