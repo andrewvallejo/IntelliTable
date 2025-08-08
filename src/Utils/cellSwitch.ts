@@ -9,5 +9,6 @@ export const cellSwitch = ({ cell }: { cell: TableCell }) => {
   if (typeCheck.string(cell)) return 'string';
   if (typeCheck.number(cell)) return 'number';
   if (typeCheck.date(cell)) return 'date';
+  // Fix return type for default case
   return 'string';
 };
