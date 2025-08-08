@@ -1,4 +1,5 @@
-import type { Data, TableCell } from '@/types/table';
+import type { Data } from '@/types/table';
+import type { TableCell } from '@/types/cell';
 import { tableData } from '@/assets/mockData';
 
 /**
