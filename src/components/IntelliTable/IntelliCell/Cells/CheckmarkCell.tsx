@@ -1,18 +1,18 @@
 import styles from './CheckmarkCell.module.css';
 
 type Props = {
-  value: boolean;
+  cell: boolean;
 };
 
-export default function CheckmarkCell({ value }: Props) {
+export default function CheckmarkCell({ cell }: Props) {
   return (
     <div
-      className={`${styles.iconWrapper} ${value ? styles.true : styles.false}`}
+      className={`${styles.iconWrapper} ${cell ? styles.true : styles.false}`}
       role="img"
-      aria-label={value ? 'True' : 'False'}
+      aria-label={cell ? 'True' : 'False'}
     >
-      <span className={`${styles.icon} ${!value ? styles.iconX : ''}`}>
-        {value ? '✓' : '×'}
+      <span className={`${styles.icon} ${!cell ? styles.iconX : ''}`}>
+        {cell ? '✓' : '×'}
       </span>
     </div>
   );

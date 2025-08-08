@@ -1,7 +1,7 @@
 // Table.tsx
 import Layout from './Layout/Layout';
 import { lazy, Suspense } from 'react';
-import type { TableCell } from '@/types/table';
+import type { TableCell } from '@/types/cell';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 
 const Table = lazy(() => import('./Table/Table'));
