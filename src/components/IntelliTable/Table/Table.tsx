@@ -1,6 +1,6 @@
 import Row from './Row/Row';
 import styles from './Table.module.css';
-import type { TableCell } from '@/types/table';
+import type { TableCell } from '@/types/cell';
 
 type Props = {
   headers: string[];

@@ -1,32 +1,69 @@
-import { useEffect, useState } from 'react';
+import { useLayoutEffect, useRef, useState } from 'react';
 
-// TODO: Write JSDocs for this hook
-
-export function useHorizontalScroll(ref: React.RefObject<HTMLElement | null>) {
+/**  A hook for managing horizontal scroll visibility */
+export function useHorizontalScroll(
+  containerReference: React.RefObject<HTMLElement | null>
+) {
   const [showLeftArrow, setShowLeftArrow] = useState(false);
   const [showRightArrow, setShowRightArrow] = useState(false);
 
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
+  const animationFrameReference = useRef<number | null>(null);
+  const resizeObserverReference = useRef<ResizeObserver | null>(null);
 
-    const update = () => {
-      const scrollLeft = el.scrollLeft;
-      const maxScrollLeft = el.scrollWidth - el.clientWidth;
+  useLayoutEffect(() => {
+    const container = containerReference.current;
+    if (!container) return;
 
+    const updateVisibility = () => {
+      const scrollLeft = container.scrollLeft;
+      const maximumScrollLeft = container.scrollWidth - container.clientWidth;
       setShowLeftArrow(scrollLeft > 0);
-      setShowRightArrow(scrollLeft < maxScrollLeft - 1);
+      setShowRightArrow(
+        maximumScrollLeft > 1 && scrollLeft < maximumScrollLeft - 1
+      );
     };
 
-    update();
-    el.addEventListener('scroll', update);
-    window.addEventListener('resize', update);
+    const scheduleInitialMeasurement = () => {
+      animationFrameReference.current = requestAnimationFrame(updateVisibility);
+      return () => {
+        if (animationFrameReference.current) {
+          cancelAnimationFrame(animationFrameReference.current);
+        }
+      };
+    };
+
+    const startResizeObservers = () => {
+      const observer = new ResizeObserver(updateVisibility);
+      observer.observe(container);
+
+      const firstChild = container.firstElementChild;
+      if (firstChild instanceof HTMLElement) {
+        observer.observe(firstChild);
+      }
+
+      resizeObserverReference.current = observer;
+      return () => observer.disconnect();
+    };
+
+    const startEventListeners = () => {
+      container.addEventListener('scroll', updateVisibility);
+      window.addEventListener('resize', updateVisibility);
+      return () => {
+        container.removeEventListener('scroll', updateVisibility);
+        window.removeEventListener('resize', updateVisibility);
+      };
+    };
+
+    const stopInitialMeasurement = scheduleInitialMeasurement();
+    const stopObserving = startResizeObservers();
+    const removeEventListeners = startEventListeners();
 
     return () => {
-      el.removeEventListener('scroll', update);
-      window.removeEventListener('resize', update);
+      stopInitialMeasurement();
+      stopObserving();
+      removeEventListeners();
     };
-  }, [ref]);
+  }, [containerReference]);
 
   return { showLeftArrow, showRightArrow };
 }

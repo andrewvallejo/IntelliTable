@@ -1,11 +1,9 @@
 import { useEffect, useState } from 'react';
 
-// TODO: Write JSDocs for this hook
+/** A hook for detecting media query matches */
 export const useMediaQuery = (query: string) => {
   const [matches, setMatches] = useState<boolean>(() => {
-    return typeof window === 'undefined'
-      ? false
-      : window.matchMedia(query).matches;
+    return !!window?.matchMedia(query).matches;
   });
 
   useEffect(() => {
