@@ -1,0 +1,35 @@
+/* ========== Table ========== */
+.table {
+  width: 100%;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  font-size: var(--font-sm);
+  border-radius: var(--radius-md);
+  border-collapse: separate;
+  border-spacing: 0;
+
+  /* Todo: Move heading CSS into header file */
+  .tableHeader {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background: var(--color-bg);
+
+    &.isScrolled {
+      box-shadow: 0 2px 6px var(--color-header-shadow);
+    }
+  }
+
+  .tableHeading {
+    height: 2.5rem;
+    background: var(--color-bg);
+    white-space: nowrap;
+    padding-inline: var(--padding-inline);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .tableBody {
+    overflow-y: auto;
+    box-shadow: 3px 3px 9px var(--color-shadow);
+  }
+}

@@ -1,0 +1,88 @@
+.track {
+  --height: 10px;
+  --hover-height: 22px;
+  --radius: 999px;
+
+  position: relative;
+  width: 100%;
+  min-width: 6rem;
+  height: var(--hover-height);
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  .bar {
+    width: var(--w);
+    min-width: 0;
+    height: var(--height);
+    border-radius: var(--radius);
+    outline: 1px solid var(--color-border);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding-inline: 0.5rem;
+    box-sizing: border-box;
+
+    transition: height 180ms ease, width 220ms ease;
+    background-color: var(--icon-true);
+  }
+
+  .value {
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    opacity: 0;
+    transform: scale(0.96);
+
+    transition: opacity 140ms ease, transform 180ms ease, color 140ms ease;
+    pointer-events: none;
+  }
+
+  &:hover {
+    .bar {
+      height: var(--hover-height);
+      min-width: max(4.5ch, var(--w));
+    }
+
+    .value {
+      opacity: 1;
+      transform: scale(1);
+      color: var(--color-text);
+    }
+  }
+
+  &[data-status='good'] .bar {
+    background-color: var(--icon-true);
+  }
+  &[data-status='warn'] .bar {
+    background-color: #f59e0b;
+  }
+  &[data-status='poor'] .bar {
+    background-color: var(--icon-false);
+  }
+}
+
+/* TODO: Move to index.css */
+
+@media (prefers-color-scheme: dark) {
+  .track {
+    .bar {
+      outline: 1px solid var(--color-border);
+    }
+
+    &:hover .value {
+      color: var(--color-text);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    .bar,
+    .value {
+      transition: none;
+    }
+  }
+}

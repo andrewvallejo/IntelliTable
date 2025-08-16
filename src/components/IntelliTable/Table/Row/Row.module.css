@@ -1,0 +1,31 @@
+/* ========== Row ========== */
+.row,
+.rowAlt {
+  td {
+    cursor: default;
+    transition: background 0.2s ease;
+    background-color: var(--color-bg);
+  }
+}
+
+.rowAlt {
+  td {
+    background-color: var(--color-surface);
+  }
+}
+
+.row:hover,
+.rowAlt:hover {
+  td {
+    background-color: var(--color-accent);
+  }
+}
+
+/* mobile */
+@media (width <= 768px) {
+  .row,
+  .row td {
+    border-bottom: 1px solid #e5e7eb;
+    background-color: transparent !important;
+  }
+}

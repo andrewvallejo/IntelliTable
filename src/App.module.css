@@ -1,14 +1,39 @@
-title {
-  will-change: filter;
-  transition: filter 300ms;
-  font-size: 3.2rem;
-  line-height: 1.1;
-}
-
-title:hover {
-  filter: drop-shadow(0 0 2rem #bcebffaa);
-}
-
 .main {
   text-align: center;
+}
+
+.title {
+  font-size: 3.2rem;
+  line-height: 1.1;
+  transition: filter 300ms;
+  will-change: filter;
+
+  &:hover {
+    filter: drop-shadow(0 0 2rem #bcebffaa);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color: #f3f4f6;
+    background-color: #242424;
+  }
+
+  body {
+    background-color: #242424;
+    color: #f3f4f6;
+  }
+
+  a {
+    color: #bcebff;
+
+    &:hover {
+      color: #90cdf4;
+    }
+  }
+
+  button {
+    background-color: #1a1a1a;
+    color: #f3f4f6;
+  }
 }

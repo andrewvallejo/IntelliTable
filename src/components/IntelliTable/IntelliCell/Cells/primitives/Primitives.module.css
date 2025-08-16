@@ -1,0 +1,14 @@
+/* ========== Star ========== */
+.star {
+  font-size: 0.9rem;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+
+  &.filled {
+    text-shadow: 0 0 0.01px #ffd75e;
+    -webkit-text-fill-color: transparent;
+  }
+
+  &.empty {
+    color: rgba(255, 255, 255, 0.3);
+  }
+}

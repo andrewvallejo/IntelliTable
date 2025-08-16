@@ -1,0 +1,47 @@
+/* ========== Tag Layout ========== */
+.flexWrap {
+  display: flex;
+  width: 100%;
+  max-width: 10rem;
+  /* TODO: Add class to add overflow auto on hover */
+  overflow: auto hidden;
+
+  .tagGroup {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: nowrap;
+  }
+
+  .tagGrid {
+    display: grid;
+    grid-template-rows: repeat(2, auto);
+    grid-auto-flow: column;
+    gap: 0.4rem;
+  }
+}
+
+/* ========== Tag ========== */
+.tag {
+  display: inline-block;
+  padding: 0.1em 0.75em;
+  border: 1px solid var(--tag-border);
+  background-color: var(--tag-bg);
+  color: var(--tag-text);
+  font-size: 0.88em;
+  font-weight: 500;
+  white-space: nowrap;
+  border-radius: 9999px;
+  box-shadow: 0 1px 2px var(--color-shadow);
+  transition: background 0.2s ease;
+
+  &:hover {
+    background-color: var(--color-border);
+  }
+}
+
+/* ========== Mobile ========== */
+@media (width <= 768px) {
+  .flexWrap {
+    max-width: unset;
+  }
+}

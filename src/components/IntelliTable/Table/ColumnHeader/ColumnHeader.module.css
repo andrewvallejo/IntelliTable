@@ -1,0 +1,53 @@
+/* ========== Column Header ========== */
+/* TODO: Try to get classname to work again if possible */
+.th {
+  height: 2.5rem;
+  padding-inline: var(--padding-inline);
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-bg);
+  white-space: nowrap;
+  color: var(--color-muted);
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+    cursor: pointer;
+    user-select: none;
+    transition: transform 0.3s ease, color 0.3s ease;
+
+    &:focus {
+      outline: none;
+    }
+
+    &:hover {
+      transform: scale(1.05);
+      color: var(--color-text);
+    }
+
+    &:focus-visible {
+      color: var(--color-focus);
+      outline: 2px solid var(--color-focus);
+      outline-offset: 1px;
+      border-radius: 0.5rem;
+
+      .icon {
+        color: var(--color-focus);
+      }
+    }
+
+    .label {
+      font-weight: 500;
+    }
+
+    .icon {
+      font-size: 0.75rem;
+      opacity: 1;
+      transition: color 0.2s ease;
+    }
+  }
+}
